@@ -19,11 +19,11 @@ some_expression?
 We can use this to simplify our error handing code:
 
 ```rust,editable
-use std::fs;
+use std::fs::{self, File};
 use std::io::{self, Read};
 
 fn read_username(path: &str) -> Result<String, io::Error> {
-    let username_file_result = fs::File::open(path);
+    let username_file_result = File::open(path);
 
     let mut username_file = match username_file_result {
         Ok(file) => file,

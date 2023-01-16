@@ -4,7 +4,7 @@ The [thiserror](https://docs.rs/thiserror/) crate is a popular way to create an
 error enum like we did on the previous page:
 
 ```rust,editable,compile_fail
-use std::{fs, io};
+use std::{fs::{self, File}, io};
 use std::io::Read;
 use thiserror::Error;
 
@@ -18,7 +18,7 @@ enum ReadUsernameError {
 
 fn read_username(path: &str) -> Result<String, ReadUsernameError> {
     let mut username = String::with_capacity(100);
-    fs::File::open(path)?.read_to_string(&mut username)?;
+    File::open(path)?.read_to_string(&mut username)?;
     if username.is_empty() {
         return Err(ReadUsernameError::EmptyUsername(String::from(path)));
     }

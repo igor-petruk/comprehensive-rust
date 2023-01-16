@@ -5,13 +5,13 @@ contextual information to your errors and allows you to have fewer
 custom error types:
 
 ```rust,editable,compile_fail
-use std::{fs, io};
+use std::{fs::{self, File}, io};
 use std::io::Read;
 use anyhow::{Context, Result, bail};
 
 fn read_username(path: &str) -> Result<String> {
     let mut username = String::with_capacity(100);
-    fs::File::open(path)
+    File::open(path)
         .context(format!("Failed to open {path}"))?
         .read_to_string(&mut username)
         .context("Failed to read")?;
