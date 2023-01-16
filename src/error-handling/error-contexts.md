@@ -7,14 +7,7 @@ custom error types:
 ```rust,editable,compile_fail
 use std::{fs, io};
 use std::io::Read;
-use thiserror::Error;
-use anyhow::{Context, Result};
-
-#[derive(Error, Debug)]
-enum ReadUsernameError {
-    #[error("Found no username in {0}")]
-    EmptyUsername(String),
-}
+use anyhow::{Context, Result, bail};
 
 fn read_username(path: &str) -> Result<String> {
     let mut username = String::with_capacity(100);
@@ -23,7 +16,7 @@ fn read_username(path: &str) -> Result<String> {
         .read_to_string(&mut username)
         .context("Failed to read")?;
     if username.is_empty() {
-        return Err(ReadUsernameError::EmptyUsername(String::from(path)).into());
+        bail!("Found no username in {path}");
     }
     Ok(username)
 }
@@ -36,3 +29,9 @@ fn main() {
     }
 }
 ```
+
+<details>
+
+`anyhow::Result<V>` is a type alias for `Result<V, anyhow::Error>`.
+
+</details>
