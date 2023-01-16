@@ -34,4 +34,7 @@ fn main() {
 
 `anyhow::Result<V>` is a type alias for `Result<V, anyhow::Error>`.
 
+`anyhow::Error` is essentially a wrapper around `Box<dyn Error>`. As such it's again generally not a
+good choice for the public API of a library, but is widely used in applications.
+
 </details>
