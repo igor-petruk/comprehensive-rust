@@ -7,5 +7,9 @@ How does Rust know to forbid shared access across thread? The answer is in two t
 * [`Sync`][2]: a type `T` is `Sync` if it is safe to move a `&T` across a thread
   boundary.
 
+`Send` and `Sync` are [unsafe traits][3]. The compiler will automatically derive them for your types
+as long as they only contain `Send` and `Sync` types.
+
 [1]: https://doc.rust-lang.org/std/marker/trait.Send.html
 [2]: https://doc.rust-lang.org/std/marker/trait.Sync.html
+[3]: ../unsafe/unsafe-traits.md
