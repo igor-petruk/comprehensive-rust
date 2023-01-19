@@ -26,3 +26,15 @@ implementation.
 [1]: https://doc.rust-lang.org/std/sync/struct.Mutex.html
 [2]: https://doc.rust-lang.org/std/sync/struct.Mutex.html#impl-Sync-for-Mutex%3CT%3E
 [3]: https://doc.rust-lang.org/std/sync/struct.Arc.html
+
+<details>
+
+You can get an `&mut T` from an `&Mutex<T>` by taking the lock. The `MutexGuard` ensures that the
+`&mut T` doesn't outlive the lock being held.
+
+If a thread panics while holding a mutex then the mutex is 'poisoned', and no other thread is able
+to access the data. If the mutex is poisoned then `Mutex::lock` will return an error.
+
+`Mutex<T>` implements both `Send` and `Sync` iff `T` implements `Send`.
+
+</details>

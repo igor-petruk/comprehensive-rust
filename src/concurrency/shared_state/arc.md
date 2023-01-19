@@ -23,3 +23,10 @@ fn main() {
 ```
 
 [1]: https://doc.rust-lang.org/std/sync/struct.Arc.html
+
+<details>
+
+`Arc<T>` implements `Clone` whether or not `T` does. It implements `Send` and `Sync` iff `T`
+implements them both.
+
+</details>

@@ -17,3 +17,9 @@ fn main() {
     println!("v: {v:?}");
 }
 ```
+
+<details>
+
+Wrapping a `Mutex` in an `Arc` is a common pattern to share mutable state between threads.
+
+</details>
