@@ -25,5 +25,6 @@ fn main() {
             .with_min_level(log::Level::Trace),
     );
     debug!("Starting program.");
+    info!("Things are going fine.");
     error!("Something went wrong!");
 }
