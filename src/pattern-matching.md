@@ -18,4 +18,8 @@ fn main() {
 }
 ```
 
-The `_` pattern is a wildcard pattern which matches any value.
+Unlike `switch`, Rust pattern matching must be _exhaustive_, in other words
+cover all possible cases.
+
+The `_` pattern is a wildcard pattern which matches any value. It can be used
+to handle all cases not explicitly covered and produce an _exhaustive_ match statement.
