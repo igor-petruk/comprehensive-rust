@@ -1,6 +1,6 @@
 # Deriving Traits
 
-You can let the compiler derive a number of traits:
+You can let the automatically derive a number of traits at compile time:
 
 ```rust,editable
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
@@ -17,3 +17,9 @@ fn main() {
              if p1 == p2 { "yes" } else { "no" });
 }
 ```
+
+<details>
+
+* You can implement your own derivation macros just like these. Many libraries do that. This is an advanced topic outside of this course scope.
+    
+</details>
